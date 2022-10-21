@@ -1,57 +1,64 @@
-import 'package:fl_components/models/models.dart';
+import 'package:fl_components/screens/slider_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'package:fl_components/models/models.dart';
 import 'package:fl_components/screens/screens.dart';
 
 class AppRoutes {
   static const initialRoute = 'home';
 
   static final menuOptions = <MenuOption>[
-    // MenuOption(
-    //     route: 'home',
-    //     icon: Icons.home,
-    //     name: 'Home Screen',
-    //     screen: const HomeScreen()),
+    // TODO: borrar home
+    // MenuOption(route: 'home', name: 'Home Screen', screen: const HomeScreen(), icon: Icons.home_max_sharp ),
     MenuOption(
         route: 'listview1',
-        icon: Icons.list_alt,
-        name: 'List View 1',
-        screen: ListView1Screen()),
+        name: 'Listview tipo 1',
+        screen: Listview1Screen(),
+        icon: Icons.list_alt),
     MenuOption(
         route: 'listview2',
-        icon: Icons.list_rounded,
-        name: 'List View 2',
-        screen: ListView2Screen()),
+        name: 'Listview tipo 2',
+        screen: Listview2Screen(),
+        icon: Icons.list),
     MenuOption(
         route: 'alert',
-        icon: Icons.warning,
-        name: 'Alert Screen',
-        screen: const AlertScreen()),
+        name: 'Alertas - Alerts',
+        screen: const AlertScreen(),
+        icon: Icons.add_alert_outlined),
     MenuOption(
         route: 'card',
-        icon: Icons.card_giftcard,
-        name: 'Card Screen',
-        screen: const CardScreen()),
+        name: 'Tarjetas - Cards',
+        screen: const CardScreen(),
+        icon: Icons.credit_card),
     MenuOption(
         route: 'avatar',
-        icon: Icons.supervised_user_circle_outlined,
         name: 'Circle Avatar',
-        screen: const AvatarScreen()),
+        screen: const AvatarScreen(),
+        icon: Icons.supervised_user_circle_outlined),
     MenuOption(
         route: 'animated',
-        icon: Icons.play_circle_outline_rounded,
-        name: 'Animated Screen',
-        screen: const AnimatedScreen()),
+        name: 'Animated Container',
+        screen: const AnimatedScreen(),
+        icon: Icons.play_circle_outline_rounded),
     MenuOption(
         route: 'inputs',
-        icon: Icons.edit_note_sharp,
-        name: 'Inputs Screen',
-        screen: const InputsScreen()),
+        name: 'Text Inputs',
+        screen: const InputsScreen(),
+        icon: Icons.input_rounded),
+    MenuOption(
+        route: 'slider',
+        name: 'Slider & Checks',
+        screen: const SliderScreen(),
+        icon: Icons.slow_motion_video_rounded),
+    MenuOption(
+        route: 'listiviewbuilder',
+        name: 'Infinite Scroll & Pull to Refresh',
+        screen: const ListViewBuilderScreen(),
+        icon: Icons.refresh),
   ];
 
   static Map<String, Widget Function(BuildContext)> getAppRoutes() {
     Map<String, Widget Function(BuildContext)> appRoutes = {};
-
     appRoutes.addAll({'home': (BuildContext context) => const HomeScreen()});
 
     for (final option in menuOptions) {
@@ -62,11 +69,11 @@ class AppRoutes {
   }
 
   // static Map<String, Widget Function(BuildContext)> routes = {
-  //   'listview1': (BuildContext context) => ListView1Screen(),
-  //   'listview2': (BuildContext context) => ListView2Screen(),
-  //   'card': (BuildContext context) => const CardScreen(),
-  //   'alert': (BuildContext context) => const AlertScreen(),
-  //   'home': (BuildContext context) => const HomeScreen()
+  //   'home'     : ( BuildContext context ) => const HomeScreen(),
+  //   'listview1': ( BuildContext context ) => const Listview1Screen(),
+  //   'listview2': ( BuildContext context ) => const Listview2Screen(),
+  //   'alert'    : ( BuildContext context ) => const AlertScreen(),
+  //   'card'     : ( BuildContext context ) => const CardScreen(),
   // };
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
