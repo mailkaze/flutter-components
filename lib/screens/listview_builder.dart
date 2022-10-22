@@ -54,6 +54,7 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
 
   void add5() {
     final lastId = imagesIds.last;
+    print('EN ADD5 IMAGESIDS ES $imagesIds');
 
     imagesIds.addAll([1, 2, 3, 4, 5].map((e) => lastId + e));
 
@@ -64,12 +65,15 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
     await Future.delayed(const Duration(seconds: 2));
     // obtengo el ultimo codigo de imgen de la lista:
     final lastId = imagesIds.last;
+    print('LASTID ES $lastId');
     // borro la lista
     imagesIds.clear();
     // le meto el siguiente codigo a la lista vacia para ver una imagen nueva
     imagesIds.add(lastId + 1);
+    print('AHORA IMAGESIDS ES $imagesIds');
+
     // me traigo 5 más
-    // add5();
+    add5();
   }
 
   @override
@@ -91,13 +95,14 @@ class _ListViewBuilderScreenState extends State<ListViewBuilderScreen> {
                   controller: scrollController,
                   itemCount: imagesIds.length,
                   itemBuilder: (BuildContext context, index) {
-                    return FadeInImage(
-                        width: double.infinity,
-                        height: 300,
-                        fit: BoxFit.cover,
-                        placeholder: AssetImage('assets/jar-loading.gif'),
-                        image: NetworkImage(
-                            'https://picsum.photos/500/300?image=${imagesIds[index]}'));
+                    return Image(
+                      width: double.infinity,
+                      height: 300,
+                      fit: BoxFit.cover,
+                      // placeholder: const AssetImage('assets/jar-loading.gif'),
+                      image: NetworkImage(
+                          'https://picsum.photos/500/300?image=${imagesIds[index]}'),
+                    );
                   }),
             ),
             if (isLoading)
